@@ -3,13 +3,11 @@
 //  Alcotec
 //
 //  Created by Admin on 30.10.2020.
-//
 
 import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, ProtocolDB {
-
 
     var db = DB()
 
