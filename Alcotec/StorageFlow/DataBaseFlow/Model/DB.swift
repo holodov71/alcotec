@@ -18,6 +18,41 @@ protocol ProtocolDB {
     func closeDB() -> String
 }
 
+protocol GettingLocationProtocol {
+    func gettingLocation() -> [Location]
+}
+
+//MARK: - Getting location from DB
+extension GettingLocationProtocol {
+    func gettingLocation() -> [Location] {
+        
+        let query = "select * from location"
+        var str: OpaquePointer? = nil
+        
+        var listOfLocations = [Location]()
+        
+        if sqlite3_prepare_v2(DB.db, query, -1, &str, nil) == SQLITE_OK {
+            print("Query \(query) is done!")
+        } else {
+            print("Query \(query) is incorrect!")
+        }
+        
+        while sqlite3_step(str) == SQLITE_ROW {
+            let id = Int(sqlite3_column_int(str, 0))
+            let name = String(cString: sqlite3_column_text(str, 1))
+            let latitude = String(cString: sqlite3_column_text(str, 2))
+            let longitude = String(cString: sqlite3_column_text(str, 3))
+            let color = String(cString: sqlite3_column_text(str, 4))
+                
+            listOfLocations.append(Location(id: id, name: name, latitude: Float(latitude) ?? 0.0, longitude: Float(longitude) ?? 0.0, color: nil ))
+        }
+        
+        sqlite3_finalize(str)
+                
+        return listOfLocations
+    }
+
+}
 //MARK: - Open DB
 extension ProtocolDB {
    
