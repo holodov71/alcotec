@@ -8,13 +8,18 @@
 import UIKit
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ProtocolDB {
 
 
+    var db = DB()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        print(openDB())
         return true
+    }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        print(closeDB())
     }
 
     // MARK: UISceneSession Lifecycle

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		849F892D254C5EA3002DE2EA /* Alcotec.db in Resources */ = {isa = PBXBuildFile; fileRef = 849F892C254C5EA3002DE2EA /* Alcotec.db */; };
+		849F8930254C601B002DE2EA /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F892F254C601B002DE2EA /* DB.swift */; };
 		84B71A49254C4D8500D94D22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B71A48254C4D8500D94D22 /* AppDelegate.swift */; };
 		84B71A4B254C4D8500D94D22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B71A4A254C4D8500D94D22 /* SceneDelegate.swift */; };
 		84B71A4D254C4D8500D94D22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B71A4C254C4D8500D94D22 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		849F892C254C5EA3002DE2EA /* Alcotec.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Alcotec.db; sourceTree = "<group>"; };
+		849F892F254C601B002DE2EA /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DB.swift; path = Alcotec/StorageFlow/DataBaseFlow/Model/DB.swift; sourceTree = SOURCE_ROOT; };
 		84B71A45254C4D8500D94D22 /* Alcotec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alcotec.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B71A48254C4D8500D94D22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84B71A4A254C4D8500D94D22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 		849F892A254C5E74002DE2EA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				849F892F254C601B002DE2EA /* DB.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84B71A4D254C4D8500D94D22 /* ViewController.swift in Sources */,
+				849F8930254C601B002DE2EA /* DB.swift in Sources */,
 				84B71A49254C4D8500D94D22 /* AppDelegate.swift in Sources */,
 				84B71A4B254C4D8500D94D22 /* SceneDelegate.swift in Sources */,
 			);
@@ -323,6 +327,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L9C33X24K8;
 				INFOPLIST_FILE = Alcotec/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -341,6 +346,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = L9C33X24K8;
 				INFOPLIST_FILE = Alcotec/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
