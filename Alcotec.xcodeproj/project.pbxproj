@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		849F892D254C5EA3002DE2EA /* Alcotec.db in Resources */ = {isa = PBXBuildFile; fileRef = 849F892C254C5EA3002DE2EA /* Alcotec.db */; };
 		84B71A49254C4D8500D94D22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B71A48254C4D8500D94D22 /* AppDelegate.swift */; };
 		84B71A4B254C4D8500D94D22 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B71A4A254C4D8500D94D22 /* SceneDelegate.swift */; };
 		84B71A4D254C4D8500D94D22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84B71A4C254C4D8500D94D22 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		849F892C254C5EA3002DE2EA /* Alcotec.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Alcotec.db; sourceTree = "<group>"; };
 		84B71A45254C4D8500D94D22 /* Alcotec.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Alcotec.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		84B71A48254C4D8500D94D22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		84B71A4A254C4D8500D94D22 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -37,6 +39,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		849F8928254C5E37002DE2EA /* StorageFlow */ = {
+			isa = PBXGroup;
+			children = (
+				849F8929254C5E6C002DE2EA /* DataBaseFlow */,
+			);
+			path = StorageFlow;
+			sourceTree = "<group>";
+		};
+		849F8929254C5E6C002DE2EA /* DataBaseFlow */ = {
+			isa = PBXGroup;
+			children = (
+				849F892B254C5E7C002DE2EA /* StorageStack */,
+				849F892A254C5E74002DE2EA /* Model */,
+			);
+			path = DataBaseFlow;
+			sourceTree = "<group>";
+		};
+		849F892A254C5E74002DE2EA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		849F892B254C5E7C002DE2EA /* StorageStack */ = {
+			isa = PBXGroup;
+			children = (
+				849F892C254C5EA3002DE2EA /* Alcotec.db */,
+			);
+			path = StorageStack;
+			sourceTree = "<group>";
+		};
 		84B71A3C254C4D8500D94D22 = {
 			isa = PBXGroup;
 			children = (
@@ -56,6 +90,7 @@
 		84B71A47254C4D8500D94D22 /* Alcotec */ = {
 			isa = PBXGroup;
 			children = (
+				849F8928254C5E37002DE2EA /* StorageFlow */,
 				84B71A48254C4D8500D94D22 /* AppDelegate.swift */,
 				84B71A4A254C4D8500D94D22 /* SceneDelegate.swift */,
 				84B71A4C254C4D8500D94D22 /* ViewController.swift */,
@@ -125,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				84B71A55254C4D8900D94D22 /* LaunchScreen.storyboard in Resources */,
+				849F892D254C5EA3002DE2EA /* Alcotec.db in Resources */,
 				84B71A52254C4D8900D94D22 /* Assets.xcassets in Resources */,
 				84B71A50254C4D8500D94D22 /* Main.storyboard in Resources */,
 			);
