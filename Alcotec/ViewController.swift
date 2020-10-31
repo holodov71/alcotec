@@ -13,6 +13,7 @@ class ViewController: UIViewController, GettingLocationProtocol {
     
     private var mapView: GMSMapView!
     private var locationManager = CLLocationManager()
+    private var marker = GMSMarker()
     
     override func viewDidLoad() {
         
@@ -29,7 +30,6 @@ class ViewController: UIViewController, GettingLocationProtocol {
         
         
         // Creates a marker in the center of the map.
-        let marker = GMSMarker()
         marker.position = CLLocationCoordinate2D(latitude: 50.4536, longitude: 30.5164)
         marker.title = "Киев"
         marker.snippet = "Укриана"
@@ -65,6 +65,13 @@ extension ViewController: CLLocationManagerDelegate {
         
         // 7
         mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 10, bearing: 0, viewingAngle: 0)
+        
+        marker.position = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        
+        marker.title = "My point"
+        marker.snippet = "Curent point"
+        marker.map = mapView
+        marker.icon = GMSMarker.markerImage(with: .red)
         
         // 8
         locationManager.stopUpdatingLocation()
