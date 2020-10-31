@@ -6,13 +6,14 @@
 //
 
 import Foundation
+import UIKit
 
 struct Location {
     var id: Int
     var name: String
     var latitude: Float
     var longitude: Float
-    var color: String?
+    var color: UIColor?
 }
 
 //struct Locations: GettingLocationProtocol {

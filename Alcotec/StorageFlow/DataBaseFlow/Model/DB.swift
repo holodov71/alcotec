@@ -7,6 +7,7 @@
 
 import Foundation
 import SQLite3
+import UIKit
 
 struct DB {
     
@@ -48,7 +49,7 @@ extension GettingLocationProtocol {
                 colorOfPin = String(cString: color)
             }
                 
-            listOfLocations.append(Location(id: id, name: name, latitude: Float(latitude) ?? 0.0, longitude: Float(longitude) ?? 0.0, color: colorOfPin ))
+            listOfLocations.append(Location(id: id, name: name, latitude: Float(latitude) ?? 0.0, longitude: Float(longitude) ?? 0.0, color: UIColor.colorWith(name: "\(String(describing: colorOfPin))") ?? UIColor.systemGray))
         }
         
         sqlite3_finalize(str)

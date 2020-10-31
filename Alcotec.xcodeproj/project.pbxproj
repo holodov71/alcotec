@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		847D474F254D73E7000BBD0E /* extensionOfUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D474E254D73E7000BBD0E /* extensionOfUIColor.swift */; };
 		849F8930254C601B002DE2EA /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F892F254C601B002DE2EA /* DB.swift */; };
 		849F8935254CA6A8002DE2EA /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F8934254CA6A8002DE2EA /* LocationModel.swift */; };
 		849F8939254CAD07002DE2EA /* Alcotec.db in Resources */ = {isa = PBXBuildFile; fileRef = 849F8938254CAD07002DE2EA /* Alcotec.db */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		847D474E254D73E7000BBD0E /* extensionOfUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionOfUIColor.swift; sourceTree = "<group>"; };
 		849F892F254C601B002DE2EA /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DB.swift; path = Alcotec/StorageFlow/DataBaseFlow/Model/DB.swift; sourceTree = SOURCE_ROOT; };
 		849F8934254CA6A8002DE2EA /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		849F8938254CAD07002DE2EA /* Alcotec.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Alcotec.db; sourceTree = "<group>"; };
@@ -43,6 +45,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		847D474D254D73C2000BBD0E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				847D474E254D73E7000BBD0E /* extensionOfUIColor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		849F8928254C5E37002DE2EA /* StorageFlow */ = {
 			isa = PBXGroup;
 			children = (
@@ -96,6 +106,7 @@
 		84B71A47254C4D8500D94D22 /* Alcotec */ = {
 			isa = PBXGroup;
 			children = (
+				847D474D254D73C2000BBD0E /* Extensions */,
 				849F8928254C5E37002DE2EA /* StorageFlow */,
 				84B71A48254C4D8500D94D22 /* AppDelegate.swift */,
 				84B71A4A254C4D8500D94D22 /* SceneDelegate.swift */,
@@ -181,6 +192,7 @@
 			files = (
 				84B71A4D254C4D8500D94D22 /* ViewController.swift in Sources */,
 				849F8930254C601B002DE2EA /* DB.swift in Sources */,
+				847D474F254D73E7000BBD0E /* extensionOfUIColor.swift in Sources */,
 				84B71A49254C4D8500D94D22 /* AppDelegate.swift in Sources */,
 				849F8935254CA6A8002DE2EA /* LocationModel.swift in Sources */,
 				84B71A4B254C4D8500D94D22 /* SceneDelegate.swift in Sources */,
