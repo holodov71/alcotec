@@ -16,9 +16,9 @@ struct Location {
 }
 
 //struct Locations: GettingLocationProtocol {
-//    var listOfLocation: [Location]?
-//    
+//    var locations: [Location]?
+//
 //    init() {
-//        self.listOfLocation = gettingLocation()
+//        self.locations = gettingLocation()
 //    }
 //}

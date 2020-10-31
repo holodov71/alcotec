@@ -14,6 +14,6 @@ class ViewController: UIViewController, GettingLocationProtocol {
         print(gettingLocation())
     }
 
-
+    
 }
 
