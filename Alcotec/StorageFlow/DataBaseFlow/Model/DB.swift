@@ -47,6 +47,7 @@ extension GettingLocationProtocol {
             
             if let color = sqlite3_column_text(str, 4) {
                 colorOfPin = String(cString: color)
+                print(colorOfPin ?? "nil")
             }
                 
             listOfLocations.append(Location(id: id, name: name, latitude: Float(latitude) ?? 0.0, longitude: Float(longitude) ?? 0.0, color: UIColor.colorWith(name: "\(String(describing: colorOfPin))") ?? UIColor.systemGray))

@@ -5,6 +5,8 @@
 //  Created by Admin on 30.10.2020.
 
 import GoogleMaps
+import GooglePlaces
+
 import UIKit
 
 @main
@@ -16,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ProtocolDB {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         GMSServices.provideAPIKey(googleApiKey)
+        GMSPlacesClient.provideAPIKey(googleApiKey)
         
 //        #if swift(>=5.3)
 //            print(">=5.3")
