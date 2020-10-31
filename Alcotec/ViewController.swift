@@ -7,13 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, GettingLocationProtocol {
 
     override func viewDidLoad() {
         
         
+        
+        print(gettingLocation())
     }
-
-
+    
 }
 

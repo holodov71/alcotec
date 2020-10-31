@@ -7,6 +7,7 @@
 
 import Foundation
 import SQLite3
+import UIKit
 
 struct DB {
     
@@ -18,6 +19,45 @@ protocol ProtocolDB {
     func closeDB() -> String
 }
 
+protocol GettingLocationProtocol {
+    func gettingLocation() -> [Location]
+}
+
+//MARK: - Getting location from DB
+extension GettingLocationProtocol {
+    func gettingLocation() -> [Location] {
+        
+        let query = "select * from location"
+        var str: OpaquePointer? = nil
+        var colorOfPin: String?
+        
+        var listOfLocations = [Location]()
+        
+        if sqlite3_prepare_v2(DB.db, query, -1, &str, nil) == SQLITE_OK {
+            print("Query \(query) is done!")
+        } else {
+            print("Query \(query) is incorrect!")
+        }
+        
+        while sqlite3_step(str) == SQLITE_ROW {
+            let id = Int(sqlite3_column_int(str, 0))
+            let name = String(cString: sqlite3_column_text(str, 1))
+            let latitude = String(cString: sqlite3_column_text(str, 2))
+            let longitude = String(cString: sqlite3_column_text(str, 3))
+            
+            if let color = sqlite3_column_text(str, 4) {
+                colorOfPin = String(cString: color)
+            }
+                
+            listOfLocations.append(Location(id: id, name: name, latitude: Float(latitude) ?? 0.0, longitude: Float(longitude) ?? 0.0, color: UIColor.colorWith(name: "\(String(describing: colorOfPin))") ?? UIColor.systemGray))
+        }
+        
+        sqlite3_finalize(str)
+                
+        return listOfLocations
+    }
+
+}
 //MARK: - Open DB
 extension ProtocolDB {
    
