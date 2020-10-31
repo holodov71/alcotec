@@ -4,14 +4,23 @@
 //
 //  Created by Admin on 30.10.2020.
 
+import GoogleMaps
 import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, ProtocolDB {
 
+    let googleApiKey = "AIzaSyAc5qXBkRTt6DIK1nN_tXRBfdcIvOj2kRU"
     var db = DB()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        GMSServices.provideAPIKey(googleApiKey)
+        
+//        #if swift(>=5.3)
+//            print(">=5.3")
+//            #endif
+        
         print(openDB())
         return true
     }
