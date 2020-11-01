@@ -12,6 +12,7 @@ class ViewController: UIViewController, GettingLocationProtocol {
     override func viewDidLoad() {
         
         
+        self.view.backgroundColor = gettingLocation()[1].color
         
         print(gettingLocation())
     }

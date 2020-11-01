@@ -5,6 +5,7 @@
 //  Created by Admin on 30.10.2020.
 
 import UIKit
+// AIzaSyAnGIODXBvuf3nlBng7i6mWjbdo_4_Ng6E
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, ProtocolDB {
