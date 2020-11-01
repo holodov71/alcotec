@@ -73,6 +73,13 @@ extension ViewController: CLLocationManagerDelegate {
         marker.map = mapView
         marker.icon = GMSMarker.markerImage(with: .red)
         
+        let coordinateKiev = CLLocation(latitude: 50.4536, longitude: 30.5164)
+        let coordinateMy = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+        let distance = Int(coordinateMy.distance(from: coordinateKiev) ) // in meters
+        print("distance =", Int(distance / 1000) )  // in km
+        
+        
+        print("locations =", locations)
         // 8
         locationManager.stopUpdatingLocation()
     }
