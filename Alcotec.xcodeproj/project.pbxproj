@@ -3,11 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		847D474F254D73E7000BBD0E /* extensionOfUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D474E254D73E7000BBD0E /* extensionOfUIColor.swift */; };
+		847D4759254EEC07000BBD0E /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 847D4758254EEC07000BBD0E /* SwiftPackageProductDependency */; };
+		847D475C254EEE4C000BBD0E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 847D475B254EEE4C000BBD0E /* Podfile */; };
 		849F8930254C601B002DE2EA /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F892F254C601B002DE2EA /* DB.swift */; };
 		849F8935254CA6A8002DE2EA /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F8934254CA6A8002DE2EA /* LocationModel.swift */; };
 		849F8939254CAD07002DE2EA /* Alcotec.db in Resources */ = {isa = PBXBuildFile; fileRef = 849F8938254CAD07002DE2EA /* Alcotec.db */; };
@@ -17,10 +19,14 @@
 		84B71A50254C4D8500D94D22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B71A4E254C4D8500D94D22 /* Main.storyboard */; };
 		84B71A52254C4D8900D94D22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84B71A51254C4D8900D94D22 /* Assets.xcassets */; };
 		84B71A55254C4D8900D94D22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84B71A53254C4D8900D94D22 /* LaunchScreen.storyboard */; };
+		F6C8AA89374EB9CE3FAFCB55 /* libPods-Alcotec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F79622B7916387FBE3645A06 /* libPods-Alcotec.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		253A0DDBC2A6718B64807FEE /* Pods-Alcotec.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alcotec.debug.xcconfig"; path = "Target Support Files/Pods-Alcotec/Pods-Alcotec.debug.xcconfig"; sourceTree = "<group>"; };
+		6395ABF52A5FD2CB05113CCC /* Pods-Alcotec.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alcotec.release.xcconfig"; path = "Target Support Files/Pods-Alcotec/Pods-Alcotec.release.xcconfig"; sourceTree = "<group>"; };
 		847D474E254D73E7000BBD0E /* extensionOfUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionOfUIColor.swift; sourceTree = "<group>"; };
+		847D475B254EEE4C000BBD0E /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		849F892F254C601B002DE2EA /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DB.swift; path = Alcotec/StorageFlow/DataBaseFlow/Model/DB.swift; sourceTree = SOURCE_ROOT; };
 		849F8934254CA6A8002DE2EA /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		849F8938254CAD07002DE2EA /* Alcotec.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Alcotec.db; sourceTree = "<group>"; };
@@ -32,6 +38,7 @@
 		84B71A51254C4D8900D94D22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		84B71A54254C4D8900D94D22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		84B71A56254C4D8900D94D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F79622B7916387FBE3645A06 /* libPods-Alcotec.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Alcotec.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,12 +46,24 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				847D4759254EEC07000BBD0E /* BuildFile in Frameworks */,
+				F6C8AA89374EB9CE3FAFCB55 /* libPods-Alcotec.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D23D3173765B644FE28C90F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				253A0DDBC2A6718B64807FEE /* Pods-Alcotec.debug.xcconfig */,
+				6395ABF52A5FD2CB05113CCC /* Pods-Alcotec.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		847D474D254D73C2000BBD0E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,8 +109,11 @@
 		84B71A3C254C4D8500D94D22 = {
 			isa = PBXGroup;
 			children = (
+				847D475B254EEE4C000BBD0E /* Podfile */,
 				84B71A47254C4D8500D94D22 /* Alcotec */,
 				84B71A46254C4D8500D94D22 /* Products */,
+				2D23D3173765B644FE28C90F /* Pods */,
+				A43F332B0D4C6BD647C135A6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -119,6 +141,14 @@
 			path = Alcotec;
 			sourceTree = "<group>";
 		};
+		A43F332B0D4C6BD647C135A6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F79622B7916387FBE3645A06 /* libPods-Alcotec.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -126,15 +156,20 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 84B71A59254C4D8900D94D22 /* Build configuration list for PBXNativeTarget "Alcotec" */;
 			buildPhases = (
+				CAC02426D9039085B8B5B25B /* [CP] Check Pods Manifest.lock */,
 				84B71A41254C4D8500D94D22 /* Sources */,
 				84B71A42254C4D8500D94D22 /* Frameworks */,
 				84B71A43254C4D8500D94D22 /* Resources */,
+				48261C5757D368DAAEBC1508 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = Alcotec;
+			packageProductDependencies = (
+				847D4758254EEC07000BBD0E /* SwiftPackageProductDependency */,
+			);
 			productName = Alcotec;
 			productReference = 84B71A45254C4D8500D94D22 /* Alcotec.app */;
 			productType = "com.apple.product-type.application";
@@ -162,6 +197,9 @@
 				Base,
 			);
 			mainGroup = 84B71A3C254C4D8500D94D22;
+			packageReferences = (
+				847D4757254EEC07000BBD0E /* RemoteSwiftPackageReference */,
+			);
 			productRefGroup = 84B71A46254C4D8500D94D22 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -179,11 +217,54 @@
 				84B71A55254C4D8900D94D22 /* LaunchScreen.storyboard in Resources */,
 				849F8939254CAD07002DE2EA /* Alcotec.db in Resources */,
 				84B71A52254C4D8900D94D22 /* Assets.xcassets in Resources */,
+				847D475C254EEE4C000BBD0E /* Podfile in Resources */,
 				84B71A50254C4D8500D94D22 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		48261C5757D368DAAEBC1508 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Alcotec/Pods-Alcotec-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Alcotec/Pods-Alcotec-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Alcotec/Pods-Alcotec-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CAC02426D9039085B8B5B25B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Alcotec-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		84B71A41254C4D8500D94D22 /* Sources */ = {
@@ -339,6 +420,7 @@
 		};
 		84B71A5A254C4D8900D94D22 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 253A0DDBC2A6718B64807FEE /* Pods-Alcotec.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -358,6 +440,7 @@
 		};
 		84B71A5B254C4D8900D94D22 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6395ABF52A5FD2CB05113CCC /* Pods-Alcotec.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -397,6 +480,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		847D4757254EEC07000BBD0E /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googlemaps/google-maps-ios-utils.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.4.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		847D4758254EEC07000BBD0E /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 847D4757254EEC07000BBD0E /* RemoteSwiftPackageReference */;
+			productName = GoogleMapsUtils;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 84B71A3D254C4D8500D94D22 /* Project object */;
 }

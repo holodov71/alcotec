@@ -5,6 +5,8 @@
 //  Created by Admin on 30.10.2020.
 
 import UIKit
+import GoogleMaps
+import GooglePlaces
 // AIzaSyAnGIODXBvuf3nlBng7i6mWjbdo_4_Ng6E
 
 @main
@@ -13,8 +15,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ProtocolDB {
     var db = DB()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        GMSServices.provideAPIKey("AIzaSyAnGIODXBvuf3nlBng7i6mWjbdo_4_Ng6E")
         print(openDB())
         return true
+    }
+    
+    func applicationDidFinishLaunching(_ application: UIApplication) {
+        //    GMSPlacesClient.provideAPIKey("YOUR_API_KEY")
+//            GMSServices.provideAPIKey("AIzaSyAnGIODXBvuf3nlBng7i6mWjbdo_4_Ng6E")
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
