@@ -5,17 +5,27 @@
 //  Created by Admin on 30.10.2020.
 
 import UIKit
+import GoogleMaps
+import GooglePlaces
+// AIzaSyAnGIODXBvuf3nlBng7i6mWjbdo_4_Ng6E
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, ProtocolDB {
 
+    
+    let googleApiKey = "AIzaSyAnGIODXBvuf3nlBng7i6mWjbdo_4_Ng6E"
     var db = DB()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        GMSServices.provideAPIKey(googleApiKey)
+//        GMSPlacesClient.provideAPIKey(googleApiKey)
         print(openDB())
         return true
     }
-    
+
+    func applicationDidFinishLaunching(_ application: UIApplication) {
+        GMSServices.provideAPIKey(googleApiKey)
+    }
     func applicationWillTerminate(_ application: UIApplication) {
         print(closeDB())
     }
