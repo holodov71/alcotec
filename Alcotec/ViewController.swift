@@ -25,14 +25,14 @@ class ViewController: UIViewController, GettingLocationProtocol, SetMarkerProtoc
         
         
         
-        let camera = GMSCameraPosition(latitude: (currentLocation?.coordinate.latitude)!, longitude: (currentLocation?.coordinate.longitude)!, zoom: 15.0)
+        let camera = GMSCameraPosition(latitude: CLLocationDegrees(location[0].latitude), longitude: CLLocationDegrees(location[0].longitude), zoom: 15.0)
+        //let camera1 = GMSCameraPosition(target: , zoom: <#T##Float#>)
         self.mapView = GMSMapView.map(withFrame: frameOfMap, camera: camera)
         self.view.addSubview(mapView)
         
         createAndSetMarker(CLLocationCoordinate2D(latitude: CLLocationDegrees( location[0].latitude), longitude: CLLocationDegrees(location[0].longitude)), location[0].name, self.mapView, location[0].color)
         
         
-        self.view.backgroundColor = PinColor.Yellow.getColor()
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -55,6 +55,7 @@ extension ViewController: CLLocationManagerDelegate {
 
         self.mapView.isMyLocationEnabled = true
         self.mapView.settings.myLocationButton = true
+        self.mapView.settings.zoomGestures = true
     }
     
 //    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
