@@ -29,7 +29,6 @@ extension GettingLocationProtocol {
         
         let query = "select * from location"
         var str: OpaquePointer? = nil
-//        var colorOfPin: String?
         
         var listOfLocations = [Location]()
         
@@ -46,10 +45,7 @@ extension GettingLocationProtocol {
             let longitude = String(cString: sqlite3_column_text(str, 3))
             let colorOfPin = String(cString: sqlite3_column_text(str, 4))
             
-//            if let color = sqlite3_column_text(str, 4) {
-//                colorOfPin = String(cString: color)
-//            }
-                
+  
             listOfLocations.append(Location(id: id, name: name, latitude: Float(latitude) ?? 0.0, longitude: Float(longitude) ?? 0.0, color: UIColor.colorWith(name: "\(String(describing: colorOfPin))") ?? UIColor.systemGray))
         }
         

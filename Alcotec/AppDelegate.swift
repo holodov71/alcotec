@@ -12,19 +12,20 @@ import GooglePlaces
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, ProtocolDB {
 
+    
+    let googleApiKey = "AIzaSyAnGIODXBvuf3nlBng7i6mWjbdo_4_Ng6E"
     var db = DB()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        GMSServices.provideAPIKey("AIzaSyAnGIODXBvuf3nlBng7i6mWjbdo_4_Ng6E")
+        GMSServices.provideAPIKey(googleApiKey)
+//        GMSPlacesClient.provideAPIKey(googleApiKey)
         print(openDB())
         return true
     }
-    
+
     func applicationDidFinishLaunching(_ application: UIApplication) {
-        //    GMSPlacesClient.provideAPIKey("YOUR_API_KEY")
-//            GMSServices.provideAPIKey("AIzaSyAnGIODXBvuf3nlBng7i6mWjbdo_4_Ng6E")
+        GMSServices.provideAPIKey(googleApiKey)
     }
-    
     func applicationWillTerminate(_ application: UIApplication) {
         print(closeDB())
     }
