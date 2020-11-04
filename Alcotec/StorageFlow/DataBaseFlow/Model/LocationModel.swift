@@ -6,20 +6,33 @@
 //
 
 import Foundation
-import UIKit
+//import UIKit
 
+
+//TODO: create tuple of coordinate
 struct Location {
+    
     var id: Int
     var name: String
-    var latitude: Float
-    var longitude: Float
-    var color: UIColor?
+    var coordinate: (Float, Float)
+    var color: String?
+    var isInRadius = true
+    
+    //    var latitude: Float
+    //    var longitude: Float
+    //    var color: UIColor?
 }
 
-//struct Locations: GettingLocationProtocol {
-//    var locations: [Location]?
-//
+struct Locations: LocationsDBProtocol {
+    static var locations: [Location] = Locations().gettingLocation()
+    
+    //didSet
+    
+//    static var shared: Locations = Locations()
 //    init() {
-//        self.locations = gettingLocation()
+//        Locations.locations = gettingLocation()
 //    }
-//}
+}
+
+
+

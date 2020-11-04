@@ -131,6 +131,7 @@
 		84B71A47254C4D8500D94D22 /* Alcotec */ = {
 			isa = PBXGroup;
 			children = (
+				84E490CA255187FC0031153C /* Enums */,
 				84E490B5255031B20031153C /* Protocols */,
 				847D474D254D73C2000BBD0E /* Extensions */,
 				849F8928254C5E37002DE2EA /* StorageFlow */,
@@ -150,9 +151,16 @@
 			children = (
 				84E490B6255031CF0031153C /* SetMarkerProtocol.swift */,
 				84E490C625508CD50031153C /* PlacementOfLocations.swift */,
-				84E490BA255038330031153C /* ColorEnum.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		84E490CA255187FC0031153C /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				84E490BA255038330031153C /* ColorEnum.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		A43F332B0D4C6BD647C135A6 /* Frameworks */ = {

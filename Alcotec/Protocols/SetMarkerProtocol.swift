@@ -9,10 +9,25 @@ import Foundation
 import GoogleMaps
 
 protocol SetMarkerProtocol {
-    func createAndSetMarker(_ coordinage: CLLocationCoordinate2D, _ title: String, _ mapView: GMSMapView, _ colorOfMarker: UIColor?)
+    
+    func createAndSetMarker(_ location: Location, _ mapView: GMSMapView)
+    func createAndSetMarker(_ coordinate: CLLocationCoordinate2D, _ title: String, _ mapView: GMSMapView, _ colorOfMarker: UIColor?)
 }
 
+//TODO: do by model
+
 extension SetMarkerProtocol {
+    
+    func createAndSetMarker(_ location: Location, _ mapView: GMSMapView) {
+        let marker = GMSMarker()
+        
+        marker.title = location.name
+        marker.position = CLLocationCoordinate2D(latitude: CLLocationDegrees( location.coordinate.0), longitude: CLLocationDegrees( location.coordinate.1))
+        marker.map = mapView
+        marker.icon = GMSMarker.markerImage(with: UIColor.colorWith(name: location.color ?? ""))
+        
+    }
+    
     func createAndSetMarker(_ coordinate: CLLocationCoordinate2D, _ title: String, _ mapView: GMSMapView, _ colorOfMarker: UIColor?){
         
         let marker = GMSMarker()

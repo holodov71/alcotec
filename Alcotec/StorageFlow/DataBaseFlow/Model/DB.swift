@@ -19,17 +19,18 @@ protocol ProtocolDB {
     func closeDB() -> String
 }
 
-protocol GettingLocationProtocol {
+protocol LocationsDBProtocol {
     func gettingLocation() -> [Location]
+    func insertLocation(_ location: Location)
 }
 
 //MARK: - Getting location from DB
-extension GettingLocationProtocol {
+extension LocationsDBProtocol {
     func gettingLocation() -> [Location] {
         
         let query = "select * from location"
         var str: OpaquePointer? = nil
-        
+        var colorOfPin: String?
         var listOfLocations = [Location]()
         
         if sqlite3_prepare_v2(DB.db, query, -1, &str, nil) == SQLITE_OK {
@@ -43,21 +44,59 @@ extension GettingLocationProtocol {
             let name = String(cString: sqlite3_column_text(str, 1))
             let latitude = String(cString: sqlite3_column_text(str, 2))
             let longitude = String(cString: sqlite3_column_text(str, 3))
-            let colorOfPin = String(cString: sqlite3_column_text(str, 4))
             
-  
-            listOfLocations.append(Location(id: id, name: name, latitude: Float(latitude) ?? 0.0, longitude: Float(longitude) ?? 0.0, color: UIColor.colorWith(name: "\(String(describing: colorOfPin))") ?? UIColor.systemGray))
+            if let color = sqlite3_column_text(str, 4) {
+                colorOfPin = String(cString: color)
+            }
+            //            let colorOfPin = String(cString: sqlite3_column_text(str, 4))
+            
+            //            listOfLocations.append(Location(id: id, name: name, latitude: Float(latitude) ?? 0.0, longitude: Float(longitude) ?? 0.0, color: UIColor.colorWith(name: "\(String(describing: colorOfPin))") ?? UIColor.systemGray))
+            listOfLocations.append(Location(id: id, name: name, coordinate: ((Float(latitude) ?? 0.0), (Float(longitude) ?? 0.0)), color: colorOfPin))
         }
         
         sqlite3_finalize(str)
-                
+        
         return listOfLocations
     }
-
+    
 }
+extension LocationsDBProtocol {
+    
+    //    let insertString = """
+    //    INSERT INTO \(inTable) (id_slide, name, word, cnt, list_word, name_topic) VALUES ('\($0.idSlide)', '\($0.name)', '\($0.word)', '\($0.cnt)', '\($0.listWord)', '\($0.nameTopic)');
+    //    """
+    //    guard sqlite3_prepare_v2(DB.db, insertString, -1, &insert, nil) == SQLITE_OK,
+    //        sqlite3_step(insert) == SQLITE_DONE
+    //        else {
+    //            let errmsg = String(cString: sqlite3_errmsg(DB.db)!)
+    //            print("error preparing insert: \(errmsg): for insert: ", insertString)
+    //            return
+    //    }
+    
+    func insertLocation(_ location: Location) {
+        let insert = "insert into Location (name, latitude, longitude, color) VALUES ('\(location.name)', '\(location.coordinate.0)', '\(location.coordinate.1)', '\(String(describing: location.color))')"
+        var str: OpaquePointer? = nil
+        
+        guard sqlite3_prepare_v2(DB.db, insert, -1, &str, nil) == SQLITE_OK,
+              sqlite3_step(str) == SQLITE_DONE
+        else {
+            let errmsg = String(cString: sqlite3_errmsg(DB.db)!)
+            print("error preparing insert: \(errmsg): for insert: ", insert)
+            return
+            
+        }
+        sqlite3_finalize(str)
+        
+    }
+}
+
+
+
+
+
 //MARK: - Open DB
 extension ProtocolDB {
-   
+    
     func openDB() -> String {
         let resource = "Alcotec"
         
@@ -86,7 +125,7 @@ extension ProtocolDB {
         
         return "error copy DB:\(dbResourcePath) in applicationSupportDirectory"
     }
-   
+    
 }
 
 extension ProtocolDB {

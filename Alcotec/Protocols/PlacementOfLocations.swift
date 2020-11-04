@@ -16,7 +16,7 @@ protocol PlacementOfLocations: SetMarkerProtocol {
 extension PlacementOfLocations {
     func placementOfLocation(_ locations: [Location], _ mapView: GMSMapView) {
         for value in locations {
-            createAndSetMarker(CLLocationCoordinate2D(latitude: CLLocationDegrees( value.latitude), longitude: CLLocationDegrees(value.longitude)), value.name, mapView, value.color)
+            createAndSetMarker(value, mapView)
         }
     }
 }

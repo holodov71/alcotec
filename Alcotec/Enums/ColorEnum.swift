@@ -8,13 +8,14 @@
 import Foundation
 import UIKit
 
-enum PinColor : Int {
-    case Red
-    case Violet
-    case Green
-    case Blue
-    case Black
-    case Yellow
+enum PinColor : String {
+    case Red = "Red"
+    case Violet = "Purple"
+    case Green = "Green"
+    case Blue = "Blue"
+    case Black = "Black"
+    case Yellow = "Yellow"
+    case Gray = "Gray"
     
     func getColor() -> UIColor {
         switch self {
@@ -30,23 +31,29 @@ enum PinColor : Int {
             return UIColor.black
         case .Yellow:
             return UIColor.yellow
+        case .Gray:
+            return UIColor.systemGray
         }
     }
     
     var descriptionImage: String {
         switch self {
         case .Violet:
-            return "_purple"
+            return "purple"
         case .Red:
-            return "_red"
+            return "red"
         case .Green:
-            return "_green"
+            return "green"
         case .Blue:
-            return "_blue"
+            return "blue"
         case .Black:
-            return "_grey"
+            return "black"
         case .Yellow:
-            return "_yellow"
+            return "yellow"
+        case .Gray:
+            return "gray"
         }
     }
 }
+
+
