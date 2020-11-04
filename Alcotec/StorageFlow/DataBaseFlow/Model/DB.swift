@@ -60,18 +60,9 @@ extension LocationsDBProtocol {
     }
     
 }
+
+//MARK: - insert new Location in BD
 extension LocationsDBProtocol {
-    
-    //    let insertString = """
-    //    INSERT INTO \(inTable) (id_slide, name, word, cnt, list_word, name_topic) VALUES ('\($0.idSlide)', '\($0.name)', '\($0.word)', '\($0.cnt)', '\($0.listWord)', '\($0.nameTopic)');
-    //    """
-    //    guard sqlite3_prepare_v2(DB.db, insertString, -1, &insert, nil) == SQLITE_OK,
-    //        sqlite3_step(insert) == SQLITE_DONE
-    //        else {
-    //            let errmsg = String(cString: sqlite3_errmsg(DB.db)!)
-    //            print("error preparing insert: \(errmsg): for insert: ", insertString)
-    //            return
-    //    }
     
     func insertLocation(_ location: Location) {
         let insert = "insert into Location (name, latitude, longitude, color) VALUES ('\(location.name)', '\(location.coordinate.0)', '\(location.coordinate.1)', '\(String(describing: location.color))')"
