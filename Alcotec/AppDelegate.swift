@@ -12,6 +12,7 @@ import GooglePlaces
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, ProtocolDB {
 
+    var locations: [Location]?
     
     let googleApiKey = "AIzaSyAnGIODXBvuf3nlBng7i6mWjbdo_4_Ng6E"
     var db = DB()
@@ -20,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ProtocolDB {
         GMSServices.provideAPIKey(googleApiKey)
 //        GMSPlacesClient.provideAPIKey(googleApiKey)
         print(openDB())
+        
+        locations = Locations.locations
+        print(locations)
         return true
     }
 
