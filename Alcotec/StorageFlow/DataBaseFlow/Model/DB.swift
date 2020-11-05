@@ -65,7 +65,7 @@ extension LocationsDBProtocol {
 extension LocationsDBProtocol {
     
     func insertLocation(_ location: Location) {
-        let insert = "insert into Location (name, latitude, longitude, color) VALUES ('\(location.name)', '\(location.coordinate.0)', '\(location.coordinate.1)', '\(String(describing: location.color))')"
+        let insert = "insert into Location (name, latitude, longitude, color) VALUES ('\(location.name)', '\(location.coordinate.0)', '\(location.coordinate.1)', '\(location.color ?? "")')"
         var str: OpaquePointer? = nil
         
         guard sqlite3_prepare_v2(DB.db, insert, -1, &str, nil) == SQLITE_OK,

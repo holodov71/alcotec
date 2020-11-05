@@ -24,6 +24,7 @@ struct Location {
 }
 
 struct Locations: LocationsDBProtocol {
+        
     static var locations: [Location] = Locations().gettingLocation()
     
     //didSet
