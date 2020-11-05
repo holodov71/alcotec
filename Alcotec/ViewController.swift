@@ -28,18 +28,29 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
     var switchSearch = UISwitch()
     var circle: GMSCircle?
     var locations = Locations.locations
-    override func viewDidLoad() {
-        
-        
-        radiusLabel = UITextView(frame: CGRect(x: 5, y: 90, width: 50, height: 30))
-        radiusLabel.alpha = 0.5
-        radiusLabel.text = "1000"
-        radiusLabel.keyboardType = .numberPad
-        radiusLabel.isHidden = true
-        
+    
+    
+    fileprivate func createMapsClearButton() {
+        mapsClear.frame = CGRect(x: self.view.frame.width - 65, y: 50, width: 60, height: 40)
+        mapsClear.backgroundColor = .systemYellow
+        mapsClear.alpha = 0.8
+        mapsClear.layer.cornerRadius = 20
+        mapsClear.setTitle("Clear", for: .normal)
+        mapsClear.setTitleColor(.black, for: .normal)
+        mapsClear.addTarget(self, action: #selector(mapsClearFunc), for: .touchUpInside)
+        self.view.addSubview(mapsClear)
+    }
+    
+    fileprivate func createSwitchMode() {
         switchSearch.frame = CGRect(x: 5, y: 40, width: 30, height: 30)
         switchSearch.addTarget(self, action: #selector(getArea), for: .valueChanged)
         switchSearch.isOn = false
+        self.view.addSubview(switchSearch)
+    }
+    
+    override func viewDidLoad() {
+        
+        
         
         let frameOfMap = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         
@@ -56,20 +67,16 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
+                
+        createMapsClearButton()
+        createSwitchMode()
         
-        radiusLabel.delegate = self
-        
-//        mapsClear.frame = CGRect(x: 250, y: 250, width: 100, height: 40)
-//        mapsClear.setTitle("Clear", for: .normal)
-//        mapsClear.addTarget(self, action: #selector(mapsClearFunc), for: .touchUpInside)
-//        self.view.addSubview(mapsClear)
-        
-        self.view.addSubview(switchSearch)
 
     }
     
     @objc func mapsClearFunc() {
         self.mapView.clear()
+        deleteAll()
     }
     
     @objc func getArea() {

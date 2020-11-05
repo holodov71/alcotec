@@ -22,6 +22,7 @@ protocol ProtocolDB {
 protocol LocationsDBProtocol {
     func gettingLocation() -> [Location]
     func insertLocation(_ location: Location)
+    func deleteAll()
 }
 
 //MARK: - Getting location from DB
@@ -81,7 +82,29 @@ extension LocationsDBProtocol {
     }
 }
 
-
+//MARK: - delete all
+extension LocationsDBProtocol {
+    func deleteAll() {
+        let query = "delete * from alcotec"
+        var del: OpaquePointer? = nil
+        
+        guard sqlite3_prepare_v2(DB.db, query, -1, &del, nil) == SQLITE_OK else {
+            let errmsg = String(cString: sqlite3_errmsg(DB.db)!)
+            print("error prepare delete: \(errmsg)")
+            return
+        }
+        
+        guard sqlite3_step(del) == SQLITE_DONE  else {
+            let errmsg = String(cString: sqlite3_errmsg(DB.db)!)
+            print("error delete: \(errmsg)")
+            return
+        }
+        
+        sqlite3_finalize(del)
+        print(query)
+        
+    }
+}
 
 
 
