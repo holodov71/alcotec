@@ -25,11 +25,10 @@ struct Location {
 
 struct Locations: LocationsDBProtocol {
         
-    static var locations: [Location] = Locations().gettingLocation() {
-        didSet {
-            
-        }
-    }
+     static var locations: [Location] = Locations().gettingLocation()
+      
+        
+    
     
     //didSet
     
@@ -39,5 +38,21 @@ struct Locations: LocationsDBProtocol {
 //    }
 }
 
-
+//class LocationObserver: LocationsDBProtocol {
+//    var locations = Locations.locations {
+//        didSet {
+//            if locations.count == 0 {
+//                deleteAll()
+//                print(gettingLocation())
+//            } else {
+//                print("locations.last = ", locations.last)
+//                if let location = locations.last {
+//                    insertLocation(location)
+//                    print(gettingLocation())
+//                }
+//                
+//            }
+//        }
+//    }
+//}
 

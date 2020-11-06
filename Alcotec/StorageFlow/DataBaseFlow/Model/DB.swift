@@ -85,7 +85,7 @@ extension LocationsDBProtocol {
 //MARK: - delete all
 extension LocationsDBProtocol {
     func deleteAll() {
-        let query = "delete * from alcotec"
+        let query = "delete from location"
         var del: OpaquePointer? = nil
         
         guard sqlite3_prepare_v2(DB.db, query, -1, &del, nil) == SQLITE_OK else {

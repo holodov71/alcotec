@@ -34,7 +34,7 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
     fileprivate func createMapsClearButton() {
         mapsClear.frame = CGRect(x: self.view.frame.width - 65, y: 50, width: 60, height: 40)
         mapsClear.backgroundColor = .systemYellow
-        mapsClear.alpha = 0.8
+        mapsClear.alpha = 0.2
         mapsClear.layer.cornerRadius = 20
         mapsClear.setTitle("Clear", for: .normal)
         mapsClear.setTitleColor(.black, for: .normal)
@@ -52,7 +52,7 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
     fileprivate func createSearchButton() {
         searchButton.frame = CGRect(x: self.view.frame.width - 65, y: 100, width: 60, height: 40)
         searchButton.backgroundColor = .systemYellow
-        searchButton.alpha = 0.8
+        searchButton.alpha = 0.2
         searchButton.layer.cornerRadius = 20
         searchButton.setTitle("Search", for: .normal)
         searchButton.setTitleColor(.black, for: .normal)
@@ -128,9 +128,11 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
             }
 
             let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in
-                //self.circle = GMSCircle(position: CLLocationCoordinate2D(latitude: CLLocationDegrees( self.locations[0].coordinate.0), longitude: CLLocationDegrees(self.locations[0].coordinate.1)), radius: CLLocationDistance(Radius.shared.radius))
+                
+//                self.circle = GMSCircle(position: CLLocationCoordinate2D(latitude: CLLocationDegrees( self.locations[0].coordinate.0), longitude: CLLocationDegrees(self.locations[0].coordinate.1)), radius: CLLocationDistance(Radius.shared.radius))
                 Radius.shared.radius = Double(alert.textFields![0].text ?? "") ?? 0.0
                 print(Radius.shared.radius)
+//                getAreaNearYou(Radius.shared.radius, &self.circle, self.locations, self.mapView, self.locations[0].coordinate.0, self.locations[0].coordinate.1)
                 self.circle?.radius = Radius.shared.radius
                 self.circle?.map = self.mapView
             }
@@ -163,11 +165,18 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
         
         let lastId = locations.last?.id ?? 0
 
+        
+        //FIXME: new alert for checking
         let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in
-            let newLocation = Location(id: lastId + 1, name: alert.textFields![0].text ?? "", coordinate: (Float(coordinate.latitude), Float(coordinate.longitude)), color: self.color?.descriptionImage)
-            self.locations.append(newLocation)
-            self.insertLocation(newLocation)
-            self.createAndSetMarker(newLocation, self.mapView)
+            if alert.textFields![0].text != "" {
+                let newLocation = Location(id: lastId + 1, name: alert.textFields![0].text ?? "", coordinate: (Float(coordinate.latitude), Float(coordinate.longitude)), color: self.color?.descriptionImage)
+                self.locations.append(newLocation)
+                self.insertLocation(newLocation)
+                self.createAndSetMarker(newLocation, self.mapView)
+            } else {
+                
+            }
+            
             
         }
         
