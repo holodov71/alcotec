@@ -112,6 +112,7 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
     
     @objc func mapsClearFunc() {
         self.mapView.clear()
+        self.locations.removeAll()
         deleteAll()
     }
     
@@ -148,7 +149,6 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
     }
     
     func rememberTheLocation(_ coordinate: CLLocationCoordinate2D) {
-        //let marker = GMSMarker()
         let alert = UIAlertController(title: "Запоминание текущей геопозиции:", message: "Укажите цвет маркера: \n\n\n\n\n\n\n", preferredStyle: .alert)
         
         alert.addTextField { (textField) in
@@ -179,7 +179,7 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
     }
 }
 
-extension ViewController: CLLocationManagerDelegate {
+extension ViewController: CLLocationManagerDelegate, GetPlaceNearProtocol {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         guard status == .authorizedWhenInUse else {
             return
@@ -201,26 +201,27 @@ extension ViewController: CLLocationManagerDelegate {
                                               longitude: location.coordinate.longitude,
                                               zoom: zoomLevel)
         
-        func getPlaceNearYour(_ radius: Double){
-            self.mapView.clear()
-            circle = GMSCircle(position: CLLocationCoordinate2D(latitude: CLLocationDegrees( location.coordinate.latitude), longitude: CLLocationDegrees(location.coordinate.longitude)), radius: CLLocationDistance(Radius.shared.radius))
-            circle?.fillColor = .lightGray
-            circle?.strokeColor = .black
-            circle?.fillColor = UIColor(displayP3Red: 0.0, green: 0.0, blue: 0.0, alpha: 0.1)
-            circle?.strokeWidth = 1
-            circle?.map = self.mapView
-            for value in self.locations {
-                let coordinateOfLocation = CLLocation(latitude: CLLocationDegrees( value.coordinate.0), longitude: CLLocationDegrees(value.coordinate.1))
-                let coordinateMy = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-                let distance = Double(coordinateMy.distance(from: coordinateOfLocation))
-                if distance <= radius {
-                    createAndSetMarker(value, self.mapView)
-                }
-            }
-        }
+//        func getPlaceNearYour(_ radius: Double){
+//            self.mapView.clear()
+//            circle = GMSCircle(position: CLLocationCoordinate2D(latitude: CLLocationDegrees( location.coordinate.latitude), longitude: CLLocationDegrees(location.coordinate.longitude)), radius: CLLocationDistance(Radius.shared.radius))
+//            circle?.fillColor = .lightGray
+//            circle?.strokeColor = .black
+//            circle?.fillColor = UIColor(displayP3Red: 0.0, green: 0.0, blue: 0.0, alpha: 0.1)
+//            circle?.strokeWidth = 1
+//            circle?.map = self.mapView
+//            for value in self.locations {
+//                let coordinateOfLocation = CLLocation(latitude: CLLocationDegrees( value.coordinate.0), longitude: CLLocationDegrees(value.coordinate.1))
+//                let coordinateMy = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+//                let distance = Double(coordinateMy.distance(from: coordinateOfLocation))
+//                if distance <= radius {
+//                    createAndSetMarker(value, self.mapView)
+//                }
+//            }
+//        }
         
         if switchSearch.isOn {
-            getPlaceNearYour(Radius.shared.radius)
+            getAreaNearYou(Radius.shared.radius, &self.circle, self.locations, self.mapView, location.coordinate.latitude, location.coordinate.longitude)
+//            getPlaceNearYour(Radius.shared.radius)
         }
         
         print(location)

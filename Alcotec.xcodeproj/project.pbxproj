@@ -10,6 +10,7 @@
 		847D474F254D73E7000BBD0E /* extensionOfUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D474E254D73E7000BBD0E /* extensionOfUIColor.swift */; };
 		847D475C254EEE4C000BBD0E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 847D475B254EEE4C000BBD0E /* Podfile */; };
 		849ABDCF2554049F005709B0 /* Radius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849ABDCE2554049F005709B0 /* Radius.swift */; };
+		849ABDD625555EA7005709B0 /* GetPlaceNearProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849ABDD525555EA7005709B0 /* GetPlaceNearProtocol.swift */; };
 		849F8930254C601B002DE2EA /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F892F254C601B002DE2EA /* DB.swift */; };
 		849F8935254CA6A8002DE2EA /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F8934254CA6A8002DE2EA /* LocationModel.swift */; };
 		849F8939254CAD07002DE2EA /* Alcotec.db in Resources */ = {isa = PBXBuildFile; fileRef = 849F8938254CAD07002DE2EA /* Alcotec.db */; };
@@ -31,6 +32,7 @@
 		847D474E254D73E7000BBD0E /* extensionOfUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionOfUIColor.swift; sourceTree = "<group>"; };
 		847D475B254EEE4C000BBD0E /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		849ABDCE2554049F005709B0 /* Radius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Radius.swift; sourceTree = "<group>"; };
+		849ABDD525555EA7005709B0 /* GetPlaceNearProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlaceNearProtocol.swift; sourceTree = "<group>"; };
 		849F892F254C601B002DE2EA /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DB.swift; path = Alcotec/StorageFlow/DataBaseFlow/Model/DB.swift; sourceTree = SOURCE_ROOT; };
 		849F8934254CA6A8002DE2EA /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		849F8938254CAD07002DE2EA /* Alcotec.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Alcotec.db; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				84E490B6255031CF0031153C /* SetMarkerProtocol.swift */,
+				849ABDD525555EA7005709B0 /* GetPlaceNearProtocol.swift */,
 				84E490C625508CD50031153C /* PlacementOfLocations.swift */,
 			);
 			path = Protocols;
@@ -298,6 +301,7 @@
 				84B71A4D254C4D8500D94D22 /* ViewController.swift in Sources */,
 				849F8930254C601B002DE2EA /* DB.swift in Sources */,
 				847D474F254D73E7000BBD0E /* extensionOfUIColor.swift in Sources */,
+				849ABDD625555EA7005709B0 /* GetPlaceNearProtocol.swift in Sources */,
 				84B71A49254C4D8500D94D22 /* AppDelegate.swift in Sources */,
 				849F8935254CA6A8002DE2EA /* LocationModel.swift in Sources */,
 				84B71A4B254C4D8500D94D22 /* SceneDelegate.swift in Sources */,
