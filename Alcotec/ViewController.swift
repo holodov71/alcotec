@@ -26,6 +26,7 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
     var pickerView = UIPickerView()
     
     var switchSearch = UISwitch()
+    var searchButton = UIButton()
     var circle: GMSCircle?
     var locations = Locations.locations
     
@@ -48,9 +49,18 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
         self.view.addSubview(switchSearch)
     }
     
+    fileprivate func createSearchButton() {
+        searchButton.frame = CGRect(x: self.view.frame.width - 65, y: 100, width: 60, height: 40)
+        searchButton.backgroundColor = .systemYellow
+        searchButton.alpha = 0.8
+        searchButton.layer.cornerRadius = 20
+        searchButton.setTitle("Search", for: .normal)
+        searchButton.setTitleColor(.black, for: .normal)
+        searchButton.addTarget(self, action: #selector(searchFunc), for: .touchUpInside)
+        self.view.addSubview(searchButton)
+    }
+    
     override func viewDidLoad() {
-        
-        
         
         let frameOfMap = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         
@@ -64,6 +74,8 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
 
         self.mapView.delegate = self
        
+        createSearchButton()
+        
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -71,7 +83,31 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
         createMapsClearButton()
         createSwitchMode()
         
-
+    }
+    
+    @objc func searchFunc() {
+        let alert = UIAlertController(title: "Поиск локации по имени", message: "", preferredStyle: .alert)
+        
+        alert.addTextField { (textField) in
+            textField.placeholder = "Введите имя"
+            textField.keyboardType = .default
+        }
+        
+        let okAction = UIAlertAction(title: "Search", style: .default) { (action) in
+            for value in self.locations {
+                if value.name == alert.textFields![0].text {
+                    self.mapView.camera = GMSCameraPosition.camera(withLatitude: CLLocationDegrees( value.coordinate.0),
+                                                          longitude: CLLocationDegrees( value.coordinate.1),
+                                                          zoom: 15.0)
+                }
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
     
     @objc func mapsClearFunc() {
@@ -91,12 +127,15 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
             }
 
             let okAction = UIAlertAction(title: "Ok", style: .default) { (action) in
-//                self.circle = GMSCircle(position: CLLocationCoordinate2D(latitude: CLLocationDegrees( self.locations[0].coordinate.0), longitude: CLLocationDegrees(self.locations[0].coordinate.1)), radius: CLLocationDistance(Radius.shared.radius))
+                //self.circle = GMSCircle(position: CLLocationCoordinate2D(latitude: CLLocationDegrees( self.locations[0].coordinate.0), longitude: CLLocationDegrees(self.locations[0].coordinate.1)), radius: CLLocationDistance(Radius.shared.radius))
                 Radius.shared.radius = Double(alert.textFields![0].text ?? "") ?? 0.0
                 print(Radius.shared.radius)
                 self.circle?.radius = Radius.shared.radius
                 self.circle?.map = self.mapView
             }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            alert.addAction(cancelAction)
             alert.addAction(okAction)
             present(alert, animated: true, completion: nil)
             
