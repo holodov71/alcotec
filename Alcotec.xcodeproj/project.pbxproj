@@ -11,6 +11,8 @@
 		847D475C254EEE4C000BBD0E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 847D475B254EEE4C000BBD0E /* Podfile */; };
 		849ABDCF2554049F005709B0 /* Radius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849ABDCE2554049F005709B0 /* Radius.swift */; };
 		849ABDD625555EA7005709B0 /* GetPlaceNearProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849ABDD525555EA7005709B0 /* GetPlaceNearProtocol.swift */; };
+		849ABDDB2556B4C9005709B0 /* SearchStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 849ABDDA2556B4C8005709B0 /* SearchStoryboard.storyboard */; };
+		849ABDE42556E63A005709B0 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849ABDE32556E63A005709B0 /* SearchViewController.swift */; };
 		849F8930254C601B002DE2EA /* DB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F892F254C601B002DE2EA /* DB.swift */; };
 		849F8935254CA6A8002DE2EA /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849F8934254CA6A8002DE2EA /* LocationModel.swift */; };
 		849F8939254CAD07002DE2EA /* Alcotec.db in Resources */ = {isa = PBXBuildFile; fileRef = 849F8938254CAD07002DE2EA /* Alcotec.db */; };
@@ -33,6 +35,8 @@
 		847D475B254EEE4C000BBD0E /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		849ABDCE2554049F005709B0 /* Radius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Radius.swift; sourceTree = "<group>"; };
 		849ABDD525555EA7005709B0 /* GetPlaceNearProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetPlaceNearProtocol.swift; sourceTree = "<group>"; };
+		849ABDDA2556B4C8005709B0 /* SearchStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchStoryboard.storyboard; sourceTree = "<group>"; };
+		849ABDE32556E63A005709B0 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		849F892F254C601B002DE2EA /* DB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DB.swift; path = Alcotec/StorageFlow/DataBaseFlow/Model/DB.swift; sourceTree = SOURCE_ROOT; };
 		849F8934254CA6A8002DE2EA /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 		849F8938254CAD07002DE2EA /* Alcotec.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Alcotec.db; sourceTree = "<group>"; };
@@ -77,6 +81,15 @@
 				847D474E254D73E7000BBD0E /* extensionOfUIColor.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		849ABDE825571620005709B0 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				849ABDDA2556B4C8005709B0 /* SearchStoryboard.storyboard */,
+				849ABDE32556E63A005709B0 /* SearchViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		849F8928254C5E37002DE2EA /* StorageFlow */ = {
@@ -136,6 +149,7 @@
 		84B71A47254C4D8500D94D22 /* Alcotec */ = {
 			isa = PBXGroup;
 			children = (
+				849ABDE825571620005709B0 /* Search */,
 				84E490CA255187FC0031153C /* Enums */,
 				84E490B5255031B20031153C /* Protocols */,
 				847D474D254D73C2000BBD0E /* Extensions */,
@@ -245,6 +259,7 @@
 				84B71A52254C4D8900D94D22 /* Assets.xcassets in Resources */,
 				847D475C254EEE4C000BBD0E /* Podfile in Resources */,
 				84B71A50254C4D8500D94D22 /* Main.storyboard in Resources */,
+				849ABDDB2556B4C9005709B0 /* SearchStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +319,7 @@
 				849ABDD625555EA7005709B0 /* GetPlaceNearProtocol.swift in Sources */,
 				84B71A49254C4D8500D94D22 /* AppDelegate.swift in Sources */,
 				849F8935254CA6A8002DE2EA /* LocationModel.swift in Sources */,
+				849ABDE42556E63A005709B0 /* SearchViewController.swift in Sources */,
 				84B71A4B254C4D8500D94D22 /* SceneDelegate.swift in Sources */,
 				849ABDCF2554049F005709B0 /* Radius.swift in Sources */,
 				84E490BB255038330031153C /* ColorEnum.swift in Sources */,

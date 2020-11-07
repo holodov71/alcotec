@@ -21,7 +21,7 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
     var preciseLocationZoomLevel: Float = 15.0
     var approximateLocationZoomLevel: Float = 10.0
     var color: PinColor?
-    let radius = 0.0
+    //let radius = 0.0
     var mapsClear = UIButton()
     var pickerView = UIPickerView()
     
@@ -29,7 +29,6 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
     var searchButton = UIButton()
     var circle: GMSCircle?
     var locations = Locations.locations
-    
     
     fileprivate func createMapsClearButton() {
         mapsClear.frame = CGRect(x: self.view.frame.width - 65, y: 50, width: 60, height: 40)
@@ -64,7 +63,10 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
         
         let frameOfMap = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         
+        
         let camera = GMSCameraPosition(latitude: CLLocationDegrees(locations[0].coordinate.0), longitude: CLLocationDegrees(locations[0].coordinate.1), zoom: 15.0)
+        
+       
         self.mapView = GMSMapView.map(withFrame: frameOfMap, camera: camera)
         self.view.addSubview(mapView)
         self.view.addSubview(radiusLabel)
@@ -85,36 +87,53 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
         
     }
     
+    
     @objc func searchFunc() {
-        let alert = UIAlertController(title: "Поиск локации по имени", message: "", preferredStyle: .alert)
-        
-        alert.addTextField { (textField) in
-            textField.placeholder = "Введите имя"
-            textField.keyboardType = .default
-        }
-        
-        let okAction = UIAlertAction(title: "Search", style: .default) { (action) in
-            for value in self.locations {
-                if value.name == alert.textFields![0].text {
-                    self.mapView.camera = GMSCameraPosition.camera(withLatitude: CLLocationDegrees( value.coordinate.0),
-                                                          longitude: CLLocationDegrees( value.coordinate.1),
-                                                          zoom: 15.0)
-                }
-            }
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        alert.addAction(cancelAction)
-        alert.addAction(okAction)
-        present(alert, animated: true, completion: nil)
+        let storyboard: UIStoryboard = UIStoryboard(name: "SearchStoryboard", bundle: nil)
+        let controller: SearchViewController = storyboard.instantiateViewController(withIdentifier: "TableVC") as! SearchViewController
+        present(controller, animated: true, completion: nil)
+        //controller.modalPresentationStyle = .fullScreen
+//        let alert = UIAlertController(title: "Поиск локации по имени", message: "", preferredStyle: .alert)
+//
+//        alert.addTextField { (textField) in
+//            textField.placeholder = "Введите имя"
+//            textField.keyboardType = .default
+//        }
+//
+//        let okAction = UIAlertAction(title: "Search", style: .default) { (action) in
+//            for value in self.locations {
+//                if value.name == alert.textFields![0].text {
+//                    self.mapView.camera = GMSCameraPosition.camera(withLatitude: CLLocationDegrees( value.coordinate.0),
+//                                                          longitude: CLLocationDegrees( value.coordinate.1),
+//                                                          zoom: 15.0)
+//                }
+//            }
+//        }
+//
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//
+//        alert.addAction(cancelAction)
+//        alert.addAction(okAction)
+//        present(alert, animated: true, completion: nil)
     }
     
     @objc func mapsClearFunc() {
-        self.mapView.clear()
-        self.locations.removeAll()
-        deleteAll()
+        let alert = UIAlertController(title: "Do you want to delete all locations?", message: "", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Yes", style: .default) { (action) in
+            self.mapView.clear()
+            self.locations.removeAll()
+            self.deleteAll()
+        }
+        
+        let cancelAction = UIAlertAction(title: "No", style: .cancel, handler: nil)
+        
+        alert.addAction(okAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true, completion: nil)
     }
+    
     
     @objc func getArea() {
         switch switchSearch.isOn {

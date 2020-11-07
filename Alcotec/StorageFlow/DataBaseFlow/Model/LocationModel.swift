@@ -16,7 +16,7 @@ struct Location {
     var name: String
     var coordinate: (Float, Float)
     var color: String?
-    var isInRadius = true
+    //var isInRadius = true
     
     //    var latitude: Float
     //    var longitude: Float
