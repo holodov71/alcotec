@@ -15,6 +15,7 @@ class SearchViewController: UIViewController {
     var searchBar = UISearchTextField()
     var filterData = [String]()
     var filtered = false
+    var controller: ViewController = ViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,12 +59,13 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource, UISe
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         print(Locations.locations[indexPath.row])
-
+        
         dismiss(animated: true, completion: nil)
 
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        //let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
-        let controller: ViewController = storyboard.instantiateViewController(withIdentifier: "VC") as! ViewController
+        //let controller = storyboard.instantiateViewController(withIdentifier: "VC") as! ViewController
+        print(controller.mapView)
         controller.mapView?.camera = GMSCameraPosition.camera(withLatitude: CLLocationDegrees(Locations.locations[indexPath.row].coordinate.0), longitude: CLLocationDegrees(Locations.locations[indexPath.row].coordinate.1), zoom: 15.0)
         
 //        controller.modalPresentationStyle = .fullScreen

@@ -16,14 +16,22 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
     var marker = GMSMarker()
     var currentLocation: CLLocation?
     var mapView: GMSMapView!
-    var radiusLabel = UITextView()
+    var radiusLabel = UILabel()
+
+    
+    var searchView = UIView()
+    var tableView = UITableView()
+    var searchBar = UISearchTextField()
+    var filterData = [String]()
+    var filtered = false
+    
     
     var preciseLocationZoomLevel: Float = 15.0
     var approximateLocationZoomLevel: Float = 10.0
     var color: PinColor?
-    //let radius = 0.0
     var mapsClear = UIButton()
     var pickerView = UIPickerView()
+    let userDefaults = UserDefaults.standard
     
     var switchSearch = UISwitch()
     var searchButton = UIButton()
@@ -59,6 +67,33 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
         self.view.addSubview(searchButton)
     }
     
+    func createRadiusLabel() {
+        radiusLabel.frame = CGRect(x: 5, y: 80, width: 70, height: 20)
+        if let radius = userDefaults.object(forKey: "radius") {
+            radiusLabel.text = "\(radius)"
+        }
+        radiusLabel.isHidden = true
+    }
+    
+    func createSearchView() {
+        
+        searchView.frame = CGRect(x: 20, y: 100, width: self.view.frame.width - 40, height: self.view.frame.height-100)
+        
+        self.view.addSubview(searchView)
+        searchBar.frame = CGRect(x: 20, y: 20, width: searchView.frame.width-40, height: 30)
+        searchBar.delegate = self
+        
+        tableView.frame = CGRect(x: 0, y: 70, width: searchView.frame.width, height: searchView.frame.height-50)
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        
+        searchView.addSubview(searchBar)
+        searchView.addSubview(tableView)
+        searchView.isHidden = true
+    }
+    
     override func viewDidLoad() {
         
         let frameOfMap = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
@@ -75,23 +110,25 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
         locationManager.distanceFilter = 1
 
         self.mapView.delegate = self
-       
+       createSearchView()
         createSearchButton()
         
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-                
+          
+        
         createMapsClearButton()
         createSwitchMode()
+        createRadiusLabel()
         
     }
-    
-    
+
     @objc func searchFunc() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "SearchStoryboard", bundle: nil)
-        let controller: SearchViewController = storyboard.instantiateViewController(withIdentifier: "TableVC") as! SearchViewController
-        present(controller, animated: true, completion: nil)
+        searchView.isHidden = false
+//        let storyboard: UIStoryboard = UIStoryboard(name: "SearchStoryboard", bundle: nil)
+//        let controller: SearchViewController = storyboard.instantiateViewController(withIdentifier: "TableVC") as! SearchViewController
+//        present(controller, animated: true, completion: nil)
         //controller.modalPresentationStyle = .fullScreen
 //        let alert = UIAlertController(title: "Поиск локации по имени", message: "", preferredStyle: .alert)
 //
@@ -139,6 +176,8 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
         switch switchSearch.isOn {
         case true:
             self.mapView.clear()
+            radiusLabel.isHidden = false
+            searchButton.isEnabled = false
             let alert = UIAlertController(title: "Enter radius: ", message: "", preferredStyle: .alert)
 
             alert.addTextField { (textField) in
@@ -154,6 +193,9 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
 //                getAreaNearYou(Radius.shared.radius, &self.circle, self.locations, self.mapView, self.locations[0].coordinate.0, self.locations[0].coordinate.1)
                 self.circle?.radius = Radius.shared.radius
                 self.circle?.map = self.mapView
+                self.radiusLabel.text = String(Radius.shared.radius)
+                    //alert.textFields![0].text
+                self.userDefaults.setValue(Radius.shared.radius, forKey: "radius")
             }
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -163,9 +205,10 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
             
         case false:
             self.mapView.clear()
+            radiusLabel.isHidden = true
+            searchButton.isEnabled = true
             self.circle?.radius = 0.0
             placementOfLocation(self.locations, self.mapView)
-            
         }
     }
     
@@ -228,7 +271,7 @@ extension ViewController: CLLocationManagerDelegate, GetPlaceNearProtocol {
         mapView.camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude,
                                               longitude: location.coordinate.longitude,
                                               zoom: zoomLevel)
-        
+       
 //        func getPlaceNearYour(_ radius: Double){
 //            self.mapView.clear()
 //            circle = GMSCircle(position: CLLocationCoordinate2D(latitude: CLLocationDegrees( location.coordinate.latitude), longitude: CLLocationDegrees(location.coordinate.longitude)), radius: CLLocationDistance(Radius.shared.radius))
@@ -313,8 +356,62 @@ extension ViewController: GMSMapViewDelegate {
     }
 }
 
-extension ViewController: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
-        Radius.shared.radius = Double(textView.text) ?? 0.0
+extension ViewController: UITableViewDelegate, UITableViewDataSource, UISearchTextFieldDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if !filterData.isEmpty {
+            return filterData.count
+        }
+        return filtered ? 0 : Locations.locations.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        print(Locations.locations[indexPath.row])
+        self.mapView.camera = GMSCameraPosition.camera(withLatitude: CLLocationDegrees(Locations.locations[indexPath.row].coordinate.0), longitude: CLLocationDegrees(Locations.locations[indexPath.row].coordinate.1), zoom: 15.0)
+        searchView.isHidden = true
+        //dismiss(animated: true, completion: nil)
+
+        //let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        //let controller = storyboard.instantiateViewController(withIdentifier: "VC") as! ViewController
+//        print(controller.mapView)
+//        controller.mapView?.camera = GMSCameraPosition.camera(withLatitude: CLLocationDegrees(Locations.locations[indexPath.row].coordinate.0), longitude: CLLocationDegrees(Locations.locations[indexPath.row].coordinate.1), zoom: 15.0)
+//
+//        controller.modalPresentationStyle = .fullScreen
+//
+//        present(controller, animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        if !filterData.isEmpty {
+            cell.textLabel?.text = filterData[indexPath.row]
+        } else {
+            cell.textLabel?.text = Locations.locations[indexPath.row].name
+
+        }
+        
+        return cell
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        if let text = textField.text {
+            filterText(text+string)
+        }
+        return true
+    }
+    
+    func filterText(_ query: String) {
+        filterData.removeAll()
+        for value in Locations.locations {
+            if value.name.lowercased().starts(with: query.lowercased()) {
+                filterData.append(value.name)
+            }
+        }
+        filtered = true
+        tableView.reloadData()
     }
 }
