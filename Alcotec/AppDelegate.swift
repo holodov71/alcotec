@@ -13,7 +13,6 @@ import GooglePlaces
 class AppDelegate: UIResponder, UIApplicationDelegate, ProtocolDB {
 
     var locations: [Location]?
-    
     let googleApiKey = "AIzaSyAnGIODXBvuf3nlBng7i6mWjbdo_4_Ng6E"
     var db = DB()
 

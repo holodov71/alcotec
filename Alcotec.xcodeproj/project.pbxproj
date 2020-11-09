@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		842E12772559399A00E39C6A /* InitVCProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E12762559399900E39C6A /* InitVCProtocol.swift */; };
+		842E127E25597BE100E39C6A /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E127D25597BE100E39C6A /* Color.swift */; };
+		842E128125597DA000E39C6A /* extOfVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842E128025597DA000E39C6A /* extOfVC.swift */; };
 		847D474F254D73E7000BBD0E /* extensionOfUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847D474E254D73E7000BBD0E /* extensionOfUIColor.swift */; };
 		847D475C254EEE4C000BBD0E /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 847D475B254EEE4C000BBD0E /* Podfile */; };
 		849ABDCF2554049F005709B0 /* Radius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849ABDCE2554049F005709B0 /* Radius.swift */; };
@@ -31,6 +34,9 @@
 /* Begin PBXFileReference section */
 		253A0DDBC2A6718B64807FEE /* Pods-Alcotec.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alcotec.debug.xcconfig"; path = "Target Support Files/Pods-Alcotec/Pods-Alcotec.debug.xcconfig"; sourceTree = "<group>"; };
 		6395ABF52A5FD2CB05113CCC /* Pods-Alcotec.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Alcotec.release.xcconfig"; path = "Target Support Files/Pods-Alcotec/Pods-Alcotec.release.xcconfig"; sourceTree = "<group>"; };
+		842E12762559399900E39C6A /* InitVCProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitVCProtocol.swift; sourceTree = "<group>"; };
+		842E127D25597BE100E39C6A /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		842E128025597DA000E39C6A /* extOfVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extOfVC.swift; sourceTree = "<group>"; };
 		847D474E254D73E7000BBD0E /* extensionOfUIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensionOfUIColor.swift; sourceTree = "<group>"; };
 		847D475B254EEE4C000BBD0E /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		849ABDCE2554049F005709B0 /* Radius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Radius.swift; sourceTree = "<group>"; };
@@ -79,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				847D474E254D73E7000BBD0E /* extensionOfUIColor.swift */,
+				842E128025597DA000E39C6A /* extOfVC.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -169,8 +176,10 @@
 			isa = PBXGroup;
 			children = (
 				84E490B6255031CF0031153C /* SetMarkerProtocol.swift */,
+				842E127D25597BE100E39C6A /* Color.swift */,
 				849ABDD525555EA7005709B0 /* GetPlaceNearProtocol.swift */,
 				84E490C625508CD50031153C /* PlacementOfLocations.swift */,
+				842E12762559399900E39C6A /* InitVCProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -314,12 +323,15 @@
 			files = (
 				84E490C725508CD50031153C /* PlacementOfLocations.swift in Sources */,
 				84B71A4D254C4D8500D94D22 /* ViewController.swift in Sources */,
+				842E12772559399A00E39C6A /* InitVCProtocol.swift in Sources */,
 				849F8930254C601B002DE2EA /* DB.swift in Sources */,
 				847D474F254D73E7000BBD0E /* extensionOfUIColor.swift in Sources */,
 				849ABDD625555EA7005709B0 /* GetPlaceNearProtocol.swift in Sources */,
 				84B71A49254C4D8500D94D22 /* AppDelegate.swift in Sources */,
 				849F8935254CA6A8002DE2EA /* LocationModel.swift in Sources */,
 				849ABDE42556E63A005709B0 /* SearchViewController.swift in Sources */,
+				842E128125597DA000E39C6A /* extOfVC.swift in Sources */,
+				842E127E25597BE100E39C6A /* Color.swift in Sources */,
 				84B71A4B254C4D8500D94D22 /* SceneDelegate.swift in Sources */,
 				849ABDCF2554049F005709B0 /* Radius.swift in Sources */,
 				84E490BB255038330031153C /* ColorEnum.swift in Sources */,
