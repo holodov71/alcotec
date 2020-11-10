@@ -68,6 +68,8 @@ class ViewController: UIViewController, LocationsDBProtocol, SetMarkerProtocol, 
         switchSearch.addTarget(self, action: #selector(getArea), for: .valueChanged)
         
         createRadiusLabel(radiusLabel, self.view, userDefaults)
+
+	print("test")
         
     }
     
